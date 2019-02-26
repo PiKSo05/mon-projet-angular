@@ -55,4 +55,16 @@ export class AppareilService {
         this.emitAppareilSubject();
         this.appareils[i].statut = 'éteint';
     }
+    addAppareil(name: string, status: string){
+        const appareilObject = {
+            id: 0,
+            nom:'',
+            statut:''
+        }
+        appareilObject.nom = name;
+        appareilObject.statut = status;
+        appareilObject.id = this.appareils[(this.appareils.length - 1)].id +1;
+        this.appareils.push(appareilObject);
+        this.emitAppareilSubject();
+    }
 }
