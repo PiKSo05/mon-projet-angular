@@ -1,45 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {AppareilService} from './Services/appareil.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  estAuthentifie = false;
-
-  dateDernierControle = new Promise((resolve, reject) => {
-    const date = new Date();
-    setTimeout(
-      () => {
-        resolve(date);
-        }, 2000
-    );
-  });
-
-  listeAppareils = [
-    {
-      nom: "Machine à laver",
-      statut: "éteint"
-    },
-    {
-      nom: "Réfrigérateur",
-      statut: "allumé"
-    },
-    {
-      nom: "Four",
-      statut: "éteint"
-    }
-  ];
-
-  constructor() {
-    setTimeout(
-      () => {
-        this.estAuthentifie = true;
-      }, 2000
-    );
-  }
-  onAllumer(){
-    console.log('On allume tout!');
-  }
+export class AppComponent{
 }
