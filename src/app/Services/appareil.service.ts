@@ -1,6 +1,10 @@
+import { Subject } from 'rxjs';
+
 export class AppareilService {
 
-    listeAppareils = [
+    appareilSubject = new Subject<any[]>();
+
+    private appareils = [
         {
             id: 1,
             nom: "Machine à laver",
@@ -18,28 +22,37 @@ export class AppareilService {
         }
     ];
 
-    getAppareilById(id: number){
-        const appareil = this.listeAppareils.find(
+    getAppareilById(id: number) {
+        const appareil = this.appareils.find(
             (s) => {
                 return s.id === id;
             }
         );
         return appareil;
     }
+
+    emitAppareilSubject() {
+        this.appareilSubject.next(this.appareils.slice());
+    }
+
     switchOnAll() {
-        for (let appareil of this.listeAppareils) {
+        for (let appareil of this.appareils) {
             appareil.statut = 'allumé';
+            this.emitAppareilSubject();
         }
     }
     switchOffAll() {
-        for (let appareil of this.listeAppareils) {
+        for (let appareil of this.appareils) {
             appareil.statut = 'éteint';
+            this.emitAppareilSubject();
         }
     }
     switchOnOne(i: number) {
-        this.listeAppareils[i].statut = 'allumé';
+        this.emitAppareilSubject();
+        this.appareils[i].statut = 'allumé';
     }
     switchOffOne(i: number) {
-        this.listeAppareils[i].statut = 'éteint';
+        this.emitAppareilSubject();
+        this.appareils[i].statut = 'éteint';
     }
 }
