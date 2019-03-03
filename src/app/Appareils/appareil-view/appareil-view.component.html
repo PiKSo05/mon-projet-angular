@@ -2,14 +2,12 @@
 <p>Dernier contrôle effectué le {{dateDernierControle | async | date : 'EEEE dd MMMM yyyy' | uppercase}}</p>
 <ul class="list-group">
   <app-appareil *ngFor="let appareil of appareils; let i = index" 
-                [index]="i"
-                [id]="appareil.id"
-                [appareilName]="appareil.nom"
-                [appareilStatus]="appareil.statut"></app-appareil>
+    [index]="i" 
+    [id]="appareil.id"
+    [appareilName]="appareil.nom" 
+    [appareilStatus]="appareil.statut"></app-appareil>
 </ul>
-<button class="btn btn-success" 
-        [disabled]="!estAuthentifie" 
-        (click)="onAllumer()">Tout allumer</button>
-<button class="btn btn-danger" 
-        [disabled]="!estAuthentifie" 
-        (click)="onEteindre()">Tout éteindre</button>
+<button class="btn btn-success" (click)="onAllumer()">Tout allumer</button>
+<button class="btn btn-danger" (click)="onEteindre()">Tout éteindre</button>
+<button class="btn btn-primary" (click)="onSave()">Enregistrer les appareils</button>
+<button class="btn btn-primary" (click)="onFetch()">Récupérer les appareils</button>

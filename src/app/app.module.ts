@@ -10,13 +10,14 @@ import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './Appareils/appareil-view/appareil-view.component'
 import { Routes, RouterModule } from "@angular/router"
 import { AuthService } from './Services/auth.service';
-import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
+import { SingleAppareilComponent } from './Appareils/single-appareil/single-appareil.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './Services/auth-guard.service';
 import { UserService } from './Services/user.service';
 import { EditAppareilComponent } from './Appareils/edit-appareil/edit-appareil.component';
 import { UserListComponent } from './Users/user-list/user-list.component';
 import { NewUserComponent } from './Users/new-user/new-user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'appareils', canActivate: [AuthGuard], component: AppareilViewComponent },
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

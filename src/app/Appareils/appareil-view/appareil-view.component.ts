@@ -22,6 +22,22 @@ export class AppareilViewComponent implements OnInit, OnDestroy {
   });
 
   appareils: any[];
+  
+
+  constructor(private appareilService: AppareilService) {
+    setTimeout(
+      () => {
+        this.estAuthentifie = true;
+      }, 2000
+    );
+  }
+
+  onSave() {
+    this.appareilService.saveAppareilToServer();
+  }
+  onFetch(){
+    this.appareilService.getAppareilFromServer();
+  }
 
   onAllumer() {
     this.appareilService.switchOnAll();
@@ -33,14 +49,6 @@ export class AppareilViewComponent implements OnInit, OnDestroy {
     } else {
       return null;
     }
-  }
-
-  constructor(private appareilService: AppareilService) {
-    setTimeout(
-      () => {
-        this.estAuthentifie = true;
-      }, 2000
-    );
   }
 
   ngOnInit() {
