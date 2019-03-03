@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppareilService} from '../../Services/appareil.service'
+import { AppareilService } from '../../Services/appareil.service';
 
 @Component({
   selector: 'app-single-appareil',

@@ -58,6 +58,7 @@ export class AppareilViewComponent implements OnInit, OnDestroy {
       }
     );
     this.appareilService.emitAppareilSubject();
+    this.appareilService.getAppareilFromServer();
   }
 
   ngOnDestroy() {
